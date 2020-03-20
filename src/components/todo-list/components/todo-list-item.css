@@ -1,0 +1,12 @@
+.label {
+  cursor: pointer;
+}
+
+.marked {
+  color: orange;
+  font-weight: bold;
+}
+
+.done {
+  text-decoration: line-through;
+}

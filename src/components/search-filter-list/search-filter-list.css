@@ -1,0 +1,7 @@
+.search-filter-list {
+  display: flex;
+}
+
+.search-filter-list-item {
+  margin: 0 10px;
+}
