@@ -8,7 +8,12 @@ const SearchInput = ({getSearchResult}) => {
   }
 
   return (
-    <input placeholder="Type to search" onChange={typeSearch} className='form-control search-input' type='search'/>
+    <input 
+      placeholder="Type to search" 
+      onChange={typeSearch} 
+      className='form-control search-input' 
+      type='search'
+    />
   )
 }
 

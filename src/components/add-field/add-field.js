@@ -10,12 +10,29 @@ const AddField = ({getAddResult, addItem, addValue}) => {
     return null
   }
 
+  const submitItem = (e) => {
+    e.preventDefault();
+    if (addValue) {
+      addItem(addValue)
+    }
+  }
+
   return (
     <div>
-      <div className="add-container d-flex">
-        <input placeholder="Fill me :)" onChange={getResult} className="form-control item-input" />
-        <button onClick={addValue ? () => addItem(addValue) : null} className="btn btn-outline-secondary">Add item</button>
-      </div>
+      <form 
+        className="add-container d-flex"
+        onSubmit={submitItem}
+      >
+        <input 
+          placeholder="Fill me :)" 
+          onChange={getResult} 
+          className="form-control item-input" 
+        />
+        <button 
+          className="btn btn-outline-secondary">
+          Add item
+        </button>
+      </form>
     </div>
   )
 }

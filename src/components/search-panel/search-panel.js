@@ -5,10 +5,10 @@ import './search-panel.css'
 
 const SearchPanel = ({getSearchResult}) => {
   return (
-  <div className="search-panel">
+  <form className="search-panel">
     <SearchInput getSearchResult={getSearchResult} />
     <SearchFilterList />
-  </div>
+  </form>
   )
 }
 
