@@ -1,24 +1,37 @@
 import React from 'react'
 import './search-filter-list.css'
+import cn from 'classnames'
 
-const SearchFilterList = () => {
-  return (
+const SearchFilterList = ({onFilter,filteredValue}) => {
+
+  const onFilterThis = (e) => {
+    onFilter(e.target.dataset.info)
+  }
+
+  const buttons = [
+    {name:'all', label: 'All'},
+    {name:'active', label: 'Active'},
+    {name:'done', label: 'Done'},
+  ]
+
+  return ( 
     <ul className='search-filter-list'>
-      <li>
-        <button type="button" className="btn btn-info">
-          All
-        </button>
-      </li>
-       <li>
-         <button type="button" className="btn btn-outline-secondary">
-          Active
-         </button>
-        </li>
-       <li>
-         <button type="button" className="btn btn-outline-secondary">
-          Done
-         </button>
-      </li>
+      {buttons.map((item) => {
+        const isActive = filteredValue === item.name
+        return (
+          <li>
+            <button
+            onClick={onFilterThis}
+            type="button" 
+            className={cn("btn", 
+            {'btn-outline-secondary': !isActive}, 
+            {"btn-info": [isActive]})} 
+            data-info={item.name}>
+              {item.label}
+            </button>
+          </li>
+        )
+      })}
     </ul>
   )
 }

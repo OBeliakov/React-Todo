@@ -22,6 +22,7 @@ const AddField = ({getAddResult, addItem, addValue}) => {
       <form 
         className="add-container d-flex"
         onSubmit={submitItem}
+        value={addValue}
       >
         <input 
           placeholder="Fill me :)" 

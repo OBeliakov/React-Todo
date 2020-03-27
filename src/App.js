@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     searchValue: '',
     deletedValue: false,
-    todoCount: 3,
+    filteredValue: 'all',
     addValue: null,
     todoArr : [
       {
@@ -51,11 +51,19 @@ class App extends Component {
     })  
   }
 
+  onFilter = (value) => {
+    this.setState({
+      filteredValue: value
+    })
+  }
+
   getAddResult = (value) => {
     this.setState({
       addValue: value
     })  
   }
+  
+  
 
   addItem = (addValue) => {
     this.setState(({todoArr}) => {
@@ -101,25 +109,31 @@ class App extends Component {
   }
  
   render() {
-    const {searchValue, todoArr, addValue} = this.state
+    const {searchValue, todoArr, addValue, filteredValue} = this.state
 
     const todoCount = todoArr.filter((item) => {
       return !item.done
-    })
+    }).length
 
-    const doneCount = todoArr.length - todoCount.length
+    const doneCount = todoArr.length - todoCount
 
     return (
       <div className="App">
         <AppHeader 
-          todoCount={todoCount.length}  
+          todoCount={todoCount}  
           doneCount={doneCount} 
         />
         <SearchPanel 
+          onFilter={this.onFilter}
           getSearchResult={this.getSearchResult} 
+          todoCount={todoCount}
+          doneCount={doneCount} 
+          todo={todoArr}
+          filteredValue={filteredValue}
         />
         <TodoList 
-          onToggleAction={this.onToggleAction} 
+          onToggleAction={this.onToggleAction}
+          filteredValue={filteredValue}
           searchValue={searchValue} 
           todo={todoArr} 
         />

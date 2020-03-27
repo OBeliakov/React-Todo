@@ -2,7 +2,7 @@ import React from 'react'
 import './todo-list-item.css'
 import cn from 'classnames'
 
-const TodoListItem = ({activity, id, important, done, getDeletedValue, onToggleAction}) => {
+const TodoListItem = ({activity, id, important, done, onToggleAction}) => {
 
    const makeImportantClick = () => {
     onToggleAction(id, 'important')
